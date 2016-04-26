@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-md-2">
+		<div class="list-group">
+			<a href="javascript:void(0)" class="list-group-item active">课程类型</a>
+			<a ui-sref="start.course.category({courseType:0})" class="list-group-item">全部</a>
+			<a ui-sref="start.course.category({courseType:1})" class="list-group-item">公共选修课</a>
+			<a ui-sref="start.course.category({courseType:2})" class="list-group-item">必修课</a>
+			<a ui-sref="start.course.category({courseType:3})" class="list-group-item">选修课</a>
+		</div>
+	</div>
+	<div class="col-md-10">
+		<div ui-view></div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav">
+            <span class="sr-only">navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)">sunile</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNav">
+        <ul class="nav navbar-nav">
+            <li ng-if="any.status==1"><a ui-sref="start.major_course">专业课程</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <!-- data-toggle翻译过来就是触发器 -->
+            <li ng-if="any.status==0"><a ui-sref="start.login">登录</a></li>
+            <li ng-if="any.status==1" class="btn-group" uib-dropdown>
+                    <a  type="button"  uib-dropdown-toggle>
+                    	<span class="glyphicon glyphicon-user" ng-bind="any.user.student_name"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul uib-dropdown-menu>
+                        <li><a ng-click="vm.defaultIndex()">我的课程</a></li>
+                        <li><a ng-click="vm.setting()">个人设置</a></li>
+                        <li><a ng-click="vm.logout()">退出</a></li>
+                    </ul>
+        </ul>
+        <form action="" class="navbar-form navbar-right">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="请输入搜索课程" ng-model="any.searchText">
+                <button type="button" class="btn btn-primary form-control-feedback">
+                <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</nav>

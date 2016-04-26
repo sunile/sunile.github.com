@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="userTab">
+            <ul ng-init="vm.activeLi=0">
+                <li ng-repeat="infoList in vm.list" ng-class="{activeInfo:vm.activeLi=={{$index}}}" ng-click="vm.activeLi=($index)">
+                    <a ng-bind="infoList.type" ui-sref="start.myRoom.info.{{infoList.state}}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ui-view=""></div>

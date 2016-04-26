@@ -1,0 +1,69 @@
+<div class="page-header text-center">
+    <h1 class="majorPlanTitle">专业培养计划课程</h1>
+   <div class="row" ng-if="vm.status==1">
+       <div class="col-md-6 col-md-offset-3">
+        <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th>最低学分要求</th>
+            <th>已选学分</th>
+        </tr>
+        <tr>
+            <th>必修课</th>
+            <td ng-bind="vm.majorPlan_require_credit" ng-if="vm.status==1"></td>
+            <td ng-bind="vm.required" ng-if="vm.status==1"></td>
+        </tr>
+        <tr>
+            <th>选修课</th>
+            <td ng-bind="vm.majorPlan_option_credit" ng-if="vm.status=1"></td>
+            <td ng-bind="vm.optioned" ng-if="vm.status=1"></td>
+        </tr>
+        </table>
+       </div>
+   </div>
+   
+</div>
+<timeline ng-if="vm.status==1">
+    <timeline-event ng-repeat="event in vm.events" side="alternate">
+        <timeline-badge class="{{event.badgeClass}}">
+            <span ng-bind="event.term"></span>
+        </timeline-badge>
+        <timeline-panel>
+            <timeline-heading>
+                <h3 class="{{event.titleClass}}" ng-bind="event.title"></h3>
+            </timeline-heading>
+            <div class="clear">
+            	<span ng-if="event.major_core_courses.length!=0">专业领域(核心课程):</span>
+                <ul>
+                    <li ng-repeat="major_core_course in event.major_core_courses track by $index"><a ui-sref="start.course_detail.courInfo({courseId:(major_core_course.course_id)})" ng-bind="major_core_course.course_name" ng-click="vm.getCourse((major_core_course.course_id),(major_core_course.teacher_id))" data-toggle="tooltip" data-placement="top" title="{{major_core_course.major_course_property}}"></a><span class="badge" ng-bind="major_core_course.credit" ></span></li>
+                </ul>
+            </div>
+            <div class="clear">
+                <span ng-if="event.major_practice_courses.length!=0">专业领域(实践课程):</span>
+                <ul>
+                    <li ng-repeat="major_practice_course in event.major_practice_courses track by $index"><a ui-sref="start.course_detail.courInfo({courseId:(major_practice_course.course_id)})" ng-bind="major_practice_course.course_name"  ng-click="vm.getCourse((major_practice_course.course_id),(major_practice_course.teacher_id))" data-toggle="tooltip" data-placement="top" title="{{major_practice_course.major_course_property}}"></a><span class="badge" ng-bind="major_practice_course.credit"></span></li>
+                </ul>
+            </div>
+            <div class="clear">
+            	<span ng-if="event.major_option_courses.length!=0">专业领域(方向课程):</span>
+                <ul>
+                    <li ng-repeat="major_option_course in event.major_option_courses track by $index"><a ui-sref="start.course_detail.courInfo({courseId:(major_option_course.course_id)})" ng-bind="major_option_course.course_name" ng-click="vm.getCourse((major_option_course.course_id),(major_option_course.teacher_id))" data-toggle="tooltip" data-placement="top" title="{{major_option_course.major_course_property}}"></a><span class="badge" ng-bind="major_option_course.credit"></span></li>
+                </ul>
+            </div>
+            <div class="clear">
+                <span ng-if="event.fundamental_courses.length!=0">公共基础课:</span>
+                <ul>
+                    <li ng-repeat="fundamental_course in event.fundamental_courses track by $index"><a ui-sref="start.course_detail.courInfo({courseId:(fundamental_course.course_id)})" ng-bind="fundamental_course.course_name" ng-click="vm.getCourse((fundamental_course.course_id),(fundamental_course.teacher_id))" data-toggle="tooltip" data-placement="top" title="{{fundamental_course.major_course_property}}"></a><span class="badge" ng-bind="fundamental_course.credit"></span></li>
+                </ul>
+            </div>
+            <div class="clear">
+                <span ng-if="event.general_courses.length!=0">学科大类课:</span>
+                <ul>
+                     <li ng-repeat="general_course in event.general_courses track by $index"><a ui-sref="start.course_detail.courInfo({courseId:(general_course.course_id)})" ng-bind="general_course.course_name" data-toggle="tooltip" data-placement="top" title="{{general_course.major_course_property}}"></a><span class="badge" ng-bind="general_course.credit" ng-click="vm.getCourse((general_course.course_id),(general_course.teacher_id))"></span></li>
+                </ul>
+            </div>
+            <timeline-footer ng-if="event.major_core_courses.length==0 && event.major_practice_courses.length==0 && event.general_courses.length==0 && event.fundamental_courses.length==0 && event.major_option_courses.length==0">你还没选课哦~</timeline-footer>
+        </timeline-panel>
+    </timeline-event>
+</timeline>
+<div class="loader" ng-if="vm.status==0">加载中...</div>

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="courDetailContent">
+            <ul ng-if="vm.status==1">
+                <li ng-repeat="chapters in vm.chapter">
+                	<h3 ng-bind="chapters.name"></h3>
+                    <ul>
+                        <li ng-repeat="section in chapters.section track by $index"><a ui-sref="start.course_detail.courContent.video">
+                        	<h4 ng-bind="section.name"></h4>
+                        	<span ng-repeat="resource in section.resource" class="glyphicon glyphicon-facetime-video" data-toggle="tooltip" data-placement="top" title="{{resource.name}}" ng-click="vm.getVideo((resource.name),(resource.url))"></span>
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="loader" ng-if="vm.status==0">加载中...</div>
+        </div>
+    </div>
+</div>

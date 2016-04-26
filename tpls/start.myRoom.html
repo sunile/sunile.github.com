@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="category">
+            <ul>
+                <!-- 易错点ng-click里面不能含有{{}} -->
+                <div class="loader2" ng-if="vm.status==0">加载中...</div>
+                <li ng-if="vm.status==1">
+                    <a href="">
+                        <img ng-src="{{vm.userInfo.imgUrl}}" alt="">
+                        <div class="info">
+                            <span ng-bind="vm.userInfo.academy"></span>
+                            <span ng-bind="vm.userInfo.department"></span>
+                            <span ng-bind="vm.userInfo.major"></span>
+                        </div>
+                    </a>
+                </li>
+                <li ng-repeat="category in vm.list" ng-class="{active:any.activeLi=={{$index}}}" ng-click="any.activeLi=($index)">
+                    <a ng-bind="category.type" ui-sref="start.myRoom.{{category.state}}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div ui-view=""></div>
+    </div>
+</div>

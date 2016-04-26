@@ -1,0 +1,68 @@
+<!-- 分类导航 -->
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="courType">
+            <span>课程类型:</span>
+            <ul ng-init="vm.activeType = 0">
+                <li ng-repeat="courType in vm.courTypes" ng-bind="courType.type" ng-click="vm.courseNav1($event,$index)" ng-class="{active:vm.activeType == {{$index}}} "></li>
+            </ul>
+        </div>
+        <div class="courType">
+            <span>课程性质:</span>
+            <ul ng-init="vm.activeProperty=0">
+                <li ng-repeat="courProperty in vm.courPropeties" ng-bind="courProperty.type" ng-click="vm.courseNav2($event,$index)" ng-class="{active:vm.activeProperty == {{$index}}} "></li>
+            </ul>
+        </div>
+        <div class="courType">
+            <span>修读学期:</span>
+            <ul ng-init="vm.activeTerm = 0">
+                <li ng-repeat="courTerm in vm.courTerm" ng-bind="courTerm.term" ng-click="vm.courseNav4($event,$index)" ng-class="{active:vm.activeTerm == {{$index}}} "></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-offset-1 col-md-10 col-xs-12">
+        <div class="col-md-3 col-xs-6" ng-repeat="course in vm.courses | filter:any.searchText|filter:vm.courType1|filter:vm.courType2|filter:vm.courType4|paging:vm.page.currentPage:vm.page.size">
+            <div class="thumbnail">
+                <div class="image-container">
+                    <img class="img-responsive" ng-src="{{course.course_img}}" alt="">
+                </div>
+                <div class="caption">
+                    <h3>
+                        <span ng-bind="course.course_name"></span>
+                    </h3> 
+                    <p>
+                        <span ng-bind="course.major_type"></span>
+                        <span class="pull-right" ng-bind="course.teacher_name"></span>
+                    </p>  
+                    <p>
+                        <span ng-bind="course.term_name"></span><span ng-bind="course.major_course_property" class="pull-right"></span>
+                    </p>
+                    <p>
+                        <span>{{course.department_name}}</span>
+                        <span class="pull-right" ng-bind="course.credit"></span>
+                    </p>
+                    <div ng-init="vm.state[$index]=(course.state)" class="courIntro">
+                        <p  class="info" ng-bind="course.course_info"></p>
+                        <p>
+                        <button class="btn pull-right" ng-if="vm.state[$index]==0" ng-click="vm.selectCour($event,(course.course_id),(course.teacher_id))">选课</button>
+                        <button class="btn selected pull-right" ng-if="vm.state[$index]==1">已选</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader" ng-if="vm.status==0">加载中...</div>
+<!-- 分页 -->
+<div class="row" ng-if="vm.status==1">
+    <div class="col-md-6 col-md-offset-6 col-xs-offset-4 col-xs-8">
+        <uib-pagination total-items="(vm.courses|filter:any.searchText|filter:vm.courType|filter:vm.courType2|filter:vm.courType4).length" ng-model="vm.page.currentPage" ng-change="vm.pageChanged()" items-per-page="vm.page.size" previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" max-size="5" boundary-links="true"></uib-pagination>
+        <!-- vm.courses默认会截取为长度 -->
+        <!-- total-items99的话有10页总页数 previous-text 上一页文本  next-text文本
+            boundary-links 是否显示首尾按钮 directive-links 是否显示上下按钮 num-pages 显示总数的可表达式
+         -->
+    </div>
+</div>

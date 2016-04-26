@@ -1,0 +1,33 @@
+<!-- 确保form上标签有一个name属性,最好再加一个novalidate="novalidate"表单提交时不进行验证 -->
+<!-- 删掉form-horzontal格式没有问题了== -->
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 col-xs-12">
+        <h3 class="text-center form_title">欢迎来到sunile专业课程学习网站
+        </h3>
+        <div class="text-center"><line class="green"></line><line class="white"></line></line><line class="orange"></line><line class="red"></line><line class="purple"></line><line class="lightpurple"></line><line class="blue"></line><line class="darkblue"></line></div>
+        <form class="form" name="form" ng-controller="loginCtrl" novalidate="" ng-submit="processForm()">
+            <div class="form-group has-feedback" ng-class="{'has-error':errorName}">
+                <label for="" class="control-label">学号</label>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <input name="user_name" type="text" class="form-control" placeholder="请输入你的学号" required ng-model="vm.userInfo.account" ng-focus="vm.change()">
+            </div>
+            <div class="form-group" ng-if="vm.tip==-1">
+                <span class="error" ng-bind=" vm.errorAccount">输入的学号不正确！</span>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-error':errorPwd}">
+                <label for="" class="control-label">密码</label>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <input type="password" class="form-control" placeholder="6-20个字符" required ng-model="vm.userInfo.pwd" ng-minlength="6" ng-maxlength="20" ng-focus="vm.change()"required>
+                <span class="help-block" ng-show="errorPwd">{{errorPwd}}</span>
+            </div>
+             <div class="form-group" ng-if="vm.tip==-2">
+                <span class="error" ng-bind="vm.errorPwd"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary " ng-disabled="form.$invalid" ng-click="vm.loginSuccess()">登录</button>
+                <button class="btn btn-primary" ng-click="vm.reset()">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- reset看情况选做 -->

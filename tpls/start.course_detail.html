@@ -1,0 +1,27 @@
+<div class="wrapDetail">
+    <div class="row">
+        <div class="col-xs-3 leftdiv">
+            <div class="courNav
+         text-center">
+                <rectangle class="posRectangle"></rectangle>
+                <circle class="posCircleTopLeft"></circle>
+                <circle class="posCircleBottomLeft"></circle>
+                <oval class="posOvalPosTop"></oval>
+                <oval class="posOvalPosBottom"></oval>
+                <span ng-bind="any.course_name"></span>
+                <ul ng-init="vm.activeLi=0">
+                    <li ng-repeat="category in vm.list" >
+                        <a ng-bind="category.type" ng-class="{activeCourItem:vm.activeLi=={{$index}}}" ng-click="vm.activeLi=($index)" ui-sref="start.course_detail.{{category.state}}({courseId:(any.activeCourseID)})" ></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9 rightdiv">
+            <div class="courContent">
+                <circle class="posCircleTopRight"></circle>
+                <circle class="posCircleBottomRight"></circle>
+                <div ui-view="content"></div>
+            </div>
+        </div>
+    </div>
+</div>

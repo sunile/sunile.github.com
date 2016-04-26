@@ -1,0 +1,23 @@
+<div class="row" ng-if="vm.status==1">
+	<div class="col-md-12">
+		<span class="course_title">课程概述</span>
+		<div class="course_content" ng-bind="vm.cour_intro"></div>
+	</div>
+</div>
+<div class="row" ng-if="vm.status==1">
+	<div class="col-md-12">
+		<span class="course_title">课程教师</span>
+		<div class="course_content">
+			<h3 ng-bind="vm.teacher_name"></h3>
+			<div ng-bind="vm.teacher_info"></div>
+		</div>
+	</div>
+</div>
+<div class="row" ng-if="vm.status==1">
+	<div class="col-md-12">
+		<span class="course_title">课程大纲</span>
+		<p class="course_content" ng-repeat="outline in vm.outline_array">{{outline}}</p>
+	</div>
+</div>
+<div class="loader" ng-if="vm.status==0">加载中...</div>
+
