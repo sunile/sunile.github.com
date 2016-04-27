@@ -1,23 +1,53 @@
 <div class="page-header text-center">
     <h1 class="majorPlanTitle">专业培养计划课程</h1>
-   <div class="row" ng-if="vm.status==1">
-       <div class="col-md-6 col-md-offset-3">
-        <table class="table table-striped">
-        <tr>
-            <th></th>
-            <th>最低学分要求</th>
-            <th>已选学分</th>
-        </tr>
-        <tr>
-            <th>必修课</th>
-            <td ng-bind="vm.majorPlan_require_credit" ng-if="vm.status==1"></td>
-            <td ng-bind="vm.required" ng-if="vm.status==1"></td>
-        </tr>
-        <tr>
-            <th>选修课</th>
-            <td ng-bind="vm.majorPlan_option_credit" ng-if="vm.status=1"></td>
-            <td ng-bind="vm.optioned" ng-if="vm.status=1"></td>
-        </tr>
+    <div class="row" ng-if="vm.status==1">
+       <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>课程类型</th>
+                <th>专业领域(核心课程)</th>
+                <th colspan="2">专业领域(实践课程)</th>
+                <th>专业领域(方向课程)</th>
+                <th>学科大类课程</th>
+                <th colspan="2">公共基础课程</th>
+                <th colspan="2">total</th>
+            </tr>
+            <tr>
+                <th>课程性质</th>
+                <td>必修</td>
+                <td>必修</td>
+                <td>选修</td>
+                <td>选修</td>
+                <td>必修</td>
+                <td>必修</td>
+                <td>选修</td>
+                <td>必修</td>
+                <td>选修</td>
+            </tr>
+            <tr>
+                <th>最低要求学分</th>
+                <td ng-bind="vm.majorPlan_core_require_credit"></td>
+                <td ng-bind="vm.majorPlan_directional_selective_credit"></td>
+                <td ng-bind="vm.majorPlan_practice_require_credit"></td>
+                <td ng-bind="vm.majorPlan_practice_selective_credit"></td>
+                <td ng-bind="vm.majorPlan_general_require_credit"></td>
+                <td ng-bind="vm.majorPlan_fundamental_require_credit"></td>
+                <td ng-bind="vm.majorPlan_majorPlan_fundamental_selective_credit"></td>
+                <td ng-bind="vm.majorPlan_require_credit"></td>
+                <td ng-bind="vm.majorPlan_option_credit"></td>
+            </tr>
+            <tr>
+                <th>已选学分</th>
+                <td ng-bind="vm.core_required_credit"></td>
+                <td ng-bind="vm.directional_optioned_credit"></td>
+                <td ng-bind="vm.practice_required_credit"></td>
+                <td ng-bind="vm.practice_optioned_credit"></td>
+                <td ng-bind="vm.basic_required_credit"></td>
+                <td ng-bind="vm.fundamental_required_credit"></td>
+                <td ng-bind="vm.fundamental_optioned_credit"></td>
+                <td ng-bind="vm.required"></td>
+                <td ng-bind="vm.optioned"></td>
+            </tr>
         </table>
        </div>
    </div>

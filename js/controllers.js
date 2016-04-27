@@ -287,14 +287,50 @@ MyCourse.query({academy_id:vm.academy_id ,major_id:vm.major_id,student_id:vm.stu
         function(res){
             vm.majorPlan_option_credit=res.majorPlan_option[0].credit;
             vm.majorPlan_require_credit=res.majorPlan_require[0].credit;
+            vm.majorPlan_core_require_credit=res.majorPlan_core_require[0].credit;
+            vm.majorPlan_directional_selective_credit=res.majorPlan_directional_selective[0].credit;
+            vm.majorPlan_practice_require_credit=res.majorPlan_practice_require[0].credit;
+            vm.majorPlan_practice_selective_credit=res.majorPlan_practice_selective[0].credit;
+            vm.majorPlan_general_require_credit=res.majorPlan_general_require[0].credit;
+            vm.majorPlan_fundamental_require_credit=res.majorPlan_fundamental_require[0].credit;
+            vm.majorPlan_majorPlan_fundamental_selective_credit=res.majorPlan_fundamental_selective[0].credit;
+            
             if(res.required[0].credit==null){
                 res.required[0].credit=0;
             }
             if(res.optioned[0].credit==null){
                 res.optioned[0].credit=0;
             }
+            if(res.core_required[0].credit==null){
+                res.core_required[0].credit=0;
+            } 
+            if(res.directional_optioned[0].credit==null){
+                res.directional_optioned[0].credit=0;
+            } 
+            if(res.practice_required[0].credit==null){
+                res.practice_required[0].credit=0;
+            }
+             if(res.practice_optioned[0].credit==null){
+                res.practice_optioned[0].credit=0;
+            }
+             if(res.basic_required[0].credit==null){
+                res.basic_required[0].credit=0;
+            }
+            if(res.fundamental_required[0].credit==null){
+                res.fundamental_required[0].credit=0;
+            }
+            if(res.fundamental_optioned[0].credit==null){
+                res.fundamental_optioned[0].credit=0;
+            }
             vm.required=res.required[0].credit;
             vm.optioned=res.optioned[0].credit;
+            vm.core_required_credit=res.core_required[0].credit;
+            vm.directional_optioned_credit=res.directional_optioned[0].credit;
+            vm.practice_required_credit=res.practice_required[0].credit;
+            vm.practice_optioned_credit=res.practice_optioned[0].credit;
+            vm.basic_required_credit=res.basic_required[0].credit;
+            vm.fundamental_required_credit=res.fundamental_required[0].credit;
+            vm.fundamental_optioned_credit=res.fundamental_optioned[0].credit;
     vm.events = [{
         term: '1',
         badgeClass: 'info',
