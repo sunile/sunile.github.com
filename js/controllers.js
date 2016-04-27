@@ -146,7 +146,19 @@ vm.loginSuccess = function() {
         },function(res){
             evt.target.innerHTML="已选";
         });
-
+    }
+    vm.deleteCour = function(evt,courseID,teacherID){
+        vm.selectCourid = courseID;
+        vm.teacherID = teacherID;
+        vm.text = evt.target.innerHTML;
+        MyCourse.update({},{
+           student_id:vm.student_id,
+           selectCourid:vm.selectCourid,
+           teacher_id:vm.teacherID,
+           text:vm.text
+        },function(res){
+            evt.target.innerHTML="选课";
+        });
     }
 }])
 
