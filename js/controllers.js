@@ -122,6 +122,7 @@ vm.loginSuccess = function() {
         currentPage: 1
     };
     vm.status=0;
+    vm.change=2;
     vm.student_id = sessionStorage.getItem("student_id");
     vm.academy_id = sessionStorage.getItem("academy_id");
     vm.major_id = sessionStorage.getItem("major_id");
@@ -146,7 +147,8 @@ vm.loginSuccess = function() {
            teacher_id:vm.teacherID,
            text:vm.text
         },function(res){
-            evt.target.innerHTML="退选";
+            evt.target.innerHTML="已选";
+            vm.change=-2;
         });
     }
     vm.deleteCour = function(evt,courseID,teacherID){
@@ -160,6 +162,7 @@ vm.loginSuccess = function() {
            text:vm.text
         },function(res){
             evt.target.innerHTML="选课";
+            vm.change=2;
         });
     }
 }])

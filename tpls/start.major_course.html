@@ -46,7 +46,7 @@
                     <div ng-init="vm.state[$index]=(course.state)" class="courIntro">
                         <p  class="info" ng-bind="course.course_info"></p>
                         <p>
-                        <button class="btn pull-right" ng-if="vm.state[$index]==0" ng-click="vm.selectCour($event,(course.course_id),(course.teacher_id))">选课</button>
+                        <button class="btn pull-right" ng-click="vm.selectCour($event,(course.course_id),(course.teacher_id))">选课</button>
                         <button class="btn selected pull-right" ng-if="vm.state[$index]==1"
                         ng-click="vm.deleteCour($event,(course.course_id),(course.teacher_id))">退选</button>
                         </p>
