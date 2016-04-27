@@ -139,10 +139,12 @@ vm.loginSuccess = function() {
     vm.selectCour = function(evt,courseID,teacherID){
         vm.selectCourid = courseID;
         vm.teacherID = teacherID;
+        vm.text = evt.target.innerHTML;
         MyCourse.update({},{
            student_id:vm.student_id,
            selectCourid:vm.selectCourid,
-           teacher_id:vm.teacherID
+           teacher_id:vm.teacherID,
+           text:vm.text
         },function(res){
             evt.target.innerHTML="退选";
         });
