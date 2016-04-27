@@ -144,7 +144,7 @@ vm.loginSuccess = function() {
            selectCourid:vm.selectCourid,
            teacher_id:vm.teacherID
         },function(res){
-            evt.target.innerHTML="已选";
+            evt.target.innerHTML="退选";
         });
     }
     vm.deleteCour = function(evt,courseID,teacherID){
